@@ -1,0 +1,73 @@
+<main class="content flex flex-col justify-center items-center gap-20">
+  <h1 class="text-5xl underline">Login</h1>
+
+  <div class="content">
+    <form
+      (submit)="login(); $event.preventDefault()"
+      class="flex justify-center items-center"
+    >
+      <fieldset class="flex flex-col justify-center gap-10 items-center  w-full bg-zinc-900 p-12 rounded-2xl">
+        <div class="flex justify-center items-center gap-8 flex-col w-full">
+          <div class="w-auto flex flex-col gap-8">
+            <!-- Usuário -->
+            <div class="w-72 flex flex-col transition-all duration-300">
+                <input
+                    type="text"
+                    placeholder="Usuário"
+                    [(ngModel)]="usuarioValue"
+                    (focus)="setFocusUsuario(true)"
+                    (blur)="setFocusUsuario(false)"
+                    class="border-none outline-none w-full bg-transparent pl-4 text-white text-2xl placeholder:text-white"
+                    name="usuario"
+              />
+              <div
+                class="h-0.5 w-0 bg-red-500 transition-all duration-300"
+                [ngClass]="focusStates().usuario ? 'w-full' : 'w-0'"
+              ></div>
+            </div>
+
+            <!-- Senha -->
+            <div class="w-72 flex flex-col transition-all duration-300">
+              <div class="relative w-full">
+                <input
+                    [type]="showPassword() ? 'text' : 'password'"
+                    placeholder="Senha"
+                    [(ngModel)]="senhaValue"
+                    (focus)="setFocusSenha(true)"
+                    (blur)="setFocusSenha(false)"
+                    class="border-none outline-none w-full bg-transparent pl-4 pr-10 text-white text-2xl placeholder:text-white"
+                    name="senha"
+                />
+                <button
+                    type="button"
+                    (click)="toggleShowPassword()"
+                    class="absolute right-2 top-1/2 -translate-y-1/2 text-white hover:text-red-500"
+                    >
+                    <i *ngIf="showPassword(); else eye" class="fa fa-eye-slash"></i>
+                    <ng-template #eye><i class="fa fa-eye"></i></ng-template>
+                </button>
+              </div>
+              <div
+                class="h-0.5 w-0 bg-red-500 transition-all duration-300"
+                [ngClass]="focusStates().senha ? 'w-full' : 'w-0'"
+              ></div>
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            class="bg-red-500 px-4 py-1.5 text-white rounded-xl border-zinc-700 border-solid uppercase text-xl transition-all duration-300 tracking-wider hover:text-red-500 hover:bg-white"
+          >
+            Login
+          </button>
+        </div>
+
+        <a routerLink="/registrar-se" routerLinkActive="active" ariaCurrentWhenActive="page" 
+        class="text-white cursor-pointer hover:text-red-500">
+          Não tem conta? Registrar-se
+        </a>
+
+      </fieldset>
+    </form>
+  </div>
+</main>

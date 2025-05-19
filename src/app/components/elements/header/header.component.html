@@ -1,2 +1,58 @@
-<h1 class="text-blue-800">Header</h1>
-<li><a class="text-6xl text-amber-900" routerLink="/first-component" routerLinkActive="active" ariaCurrentWhenActive="page">First Component</a></li>
+<header class="w-full fixed z-30">
+    <div [ngStyle]="menuAberto() ? { height: '100vh' } : { height: '0' }" 
+    id="boxHeader" 
+    class="w-full flex flex-col justify-start items-end transtion-all duration-300 bg-black/90">
+        <nav [ngStyle]="scrolled() ? { padding: '0', backgroundColor: 'color-mix(in oklab, #000 40%, transparent)' } : { padding: '12px 0' }"
+        id="nav" class="w-full h-auto py-3 transition-all duration-300">
+            <div class="content h-14 flex justify-between items-center">
+                <img [ngStyle]="scrolled() ? { height: '36px' } : { height: '48px' }" 
+                id="logo" 
+                class="h-12 trnasition-height duration-300"
+                [src]="imagemUrl()" alt="Logo da SATC" />
+
+                <div class="full flex justify-end items-center gap-20">
+                    <h1 *ngIf="usuarioLogado.usuario" class="text-3xl">{{ usuarioLogado.usuario }}</h1>
+                    <h1 (click)="menu()"
+                    class="text-3xl text-red-500 uppercase font-bold cursor-pointer flex gap-2 justify-center items-center">
+                        Menu
+
+                        <div [ngStyle]="{ transform: menuAberto() ? 'rotate(360deg)' : 'rotate(180deg)' }"
+                        class="h-6 w-6 flex justify-center items-center transition-transform duration-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                <path fill="#e00000" d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"/>
+                            </svg>
+                        </div>
+                    </h1>
+                </div>
+            </div>
+        </nav>
+        <div [ngStyle]="menuAberto() ? { right: '0' } : { right: '-9000px' }" 
+        class="w-full h-full flex flex-col justify-center items-end gap-7 bg-black p-4 transition-all duration-300 relative  lg:w-1/4">
+            @if (!usuarioLogado) {
+            <a class="text-white text-3xl relative group"
+            routerLink="/registrar-se" routerLinkActive="active" ariaCurrentWhenActive="page">
+                Registrar-se
+                <div class="absolute h-0.5 bg-red-700 w-0 group-hover:w-full transition-all duration-300"></div>
+            </a>
+
+            <a class="text-white text-3xl relative group"
+            routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">
+                Login
+                <div class="absolute h-0.5 bg-red-700 w-0 group-hover:w-full transition-all duration-300"></div>
+            </a>
+            }
+
+            <div (click)="logout()" 
+            class="text-white text-3xl relative group cursor-pointer">
+                Logout
+                <div class="absolute h-0.5 bg-red-700 w-0 group-hover:w-full transition-all duration-300"></div>
+            </div>
+
+            <a class="text-white text-3xl relative group"
+            routerLink="/first-component" routerLinkActive="active" ariaCurrentWhenActive="page">
+                First Component
+                <div class="absolute h-0.5 bg-red-700 w-0 group-hover:w-full transition-all duration-300"></div>
+            </a>
+        </div>
+    </div>
+</header>
