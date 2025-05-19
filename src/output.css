@@ -9,6 +9,10 @@
       "Courier New", monospace;
     --color-red-50: oklch(97.1% 0.013 17.38);
     --color-red-100: oklch(93.6% 0.032 17.717);
+    --color-amber-900: oklch(41.4% 0.112 45.904);
+    --color-blue-800: oklch(42.4% 0.199 265.638);
+    --text-6xl: 3.75rem;
+    --text-6xl--line-height: 1;
     --text-9xl: 8rem;
     --text-9xl--line-height: 1;
     --default-font-family: var(--font-sans);
@@ -174,15 +178,19 @@
     border-style: var(--tw-border-style);
     border-width: 1px;
   }
+  .text-6xl {
+    font-size: var(--text-6xl);
+    line-height: var(--tw-leading, var(--text-6xl--line-height));
+  }
   .text-9xl {
     font-size: var(--text-9xl);
     line-height: var(--tw-leading, var(--text-9xl--line-height));
   }
-  .text-red-50 {
-    color: var(--color-red-50);
+  .text-amber-900 {
+    color: var(--color-amber-900);
   }
-  .text-red-100 {
-    color: var(--color-red-100);
+  .text-blue-800 {
+    color: var(--color-blue-800);
   }
   .underline {
     text-decoration-line: underline;
