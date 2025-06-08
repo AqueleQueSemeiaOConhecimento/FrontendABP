@@ -2,7 +2,7 @@ import { Component, signal } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 
 @Component({
@@ -14,6 +14,8 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 export class LoginComponent {
   usuarioValue = '';
   senhaValue = '';
+
+  constructor(private router: Router) {}
 
   showPassword = signal(false);
   focusStates = signal({ usuario: false, senha: false });
@@ -50,6 +52,7 @@ export class LoginComponent {
     };
 
     localStorage.setItem('userLogado', JSON.stringify(usuarioLogadoAgr));
+    this.router.navigate(['/acompanhamento']);
     
     alert('Usuário logado com sucesso!');
   }

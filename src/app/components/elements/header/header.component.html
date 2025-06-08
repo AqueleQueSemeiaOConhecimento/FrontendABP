@@ -11,7 +11,7 @@
                 [src]="imagemUrl()" alt="Logo da SATC" />
 
                 <div class="full flex justify-end items-center gap-20">
-                    <h1 *ngIf="usuarioLogado.usuario" class="text-3xl">{{ usuarioLogado.usuario }}</h1>
+                    <h1 *ngIf="usuarioLogado().usuario" class="text-3xl">{{ usuarioLogado().usuario }}</h1>
                     <h1 (click)="menu()"
                     class="text-3xl text-red-500 uppercase font-bold cursor-pointer flex gap-2 justify-center items-center">
                         Menu

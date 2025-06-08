@@ -2,15 +2,16 @@ import { Component, signal } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
   imports: [NgClass, FormsModule, NgIf, RouterLink, RouterLinkActive],
   templateUrl: './registro.component.html',
-  styleUrls: ['./registro.component.css']  // corrigido plural
+  styleUrls: ['./registro.component.css']  
 })
 export class RegistroComponent {
+  constructor(private router: Router) {}
   usuarioValue = '';
   senhaValue = '';
 
@@ -51,5 +52,6 @@ export class RegistroComponent {
     usuariosSalvos.push(novoUsuario);
     localStorage.setItem('usuarios', JSON.stringify(usuariosSalvos));
     alert('Usuário registrado com sucesso!');
+    this.router.navigate(['/login']);
   }
 }

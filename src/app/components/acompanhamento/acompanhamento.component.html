@@ -1,0 +1,45 @@
+<main class="content flex flex-col justify-center items-center gap-20 overflow-x-hidden">
+  
+  <div class="table-wrapper">      
+        <table class="tabela">
+            <thead>
+                <tr>
+                <th colspan="8">Acompanhamento</th>
+                </tr>
+                <tr>
+                <th>Matéria</th>
+                <th>Nota 1</th>
+                <th>Nota 2</th>
+                <th>Nota 3</th>
+                <th>Nota 4</th>
+                <th>Média</th>
+                <th>Faltas</th>
+                <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr *ngFor="let materia of materias; let i = index">
+                        <td><input [(ngModel)]="materia.nome" type="text" /></td>
+                        <td><input type="number" [id]="'nota1-' + i" [(ngModel)]="materia.nota1"></td>
+                        <td><input type="number" [id]="'nota2-' + i" [(ngModel)]="materia.nota2"></td>
+                        <td><input type="number" [id]="'nota3-' + i" [(ngModel)]="materia.nota3"></td>
+                        <td><input type="number" [id]="'nota4-' + i" [(ngModel)]="materia.nota4"></td>
+                        <td>{{ calcularMedia(materia) }}</td>
+                        <td><input type="number" [id]="'faltas-' + i" [(ngModel)]="materia.faltas"></td>
+                        <td class="bg-red-500 group-hover:cursor-pointer group" (click)="removerMateria(i)">
+                            <strong class="uppercase font-bold relative text-white left-0 transition-all duration-300 group-hover:-left-2">Deletar</strong>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>    
+  </div>
+
+  <div class="w-full flex justify-center items-center">
+    <button (click)="adicionarMateria()" class="bg-green-700 px-4 py-2 rounded-full uppercase text-white font-semibold transition-colors duration-300 hover:bg-green-500">
+      Add Matéria
+    </button>
+    <button (click)="salvarLocalStorage()" class="ml-4 bg-blue-700 px-4 py-2 rounded-full uppercase text-white font-semibold transition-colors duration-300 hover:bg-blue-500">
+      Salvar
+    </button>
+  </div>
+</main>

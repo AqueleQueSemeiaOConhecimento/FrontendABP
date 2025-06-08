@@ -23,7 +23,7 @@ export class HeaderComponent {
 
   logout() {
     localStorage.removeItem("userLogado");
-    this.usuarioLogado = '';
+    this.usuarioLogado.set('');
     this.router.navigate(['/login']);
     alert("Sessão encerrada!");
   }
@@ -34,6 +34,6 @@ export class HeaderComponent {
     this.scrolled.set(window.innerWidth > 1024 && window.scrollY >= 80);
   }
   
-  usuarioLogado = JSON.parse(localStorage.getItem('userLogado') || '{}');
+usuarioLogado = signal(JSON.parse(localStorage.getItem('userLogado') || '{}'));
 
 }
