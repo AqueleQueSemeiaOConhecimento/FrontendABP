@@ -46,6 +46,11 @@ export class LoginComponent {
       return;
     }
 
+    if (usuarioExiste.senha !== this.senhaValue) {
+      alert('Senha incorreta.');
+      return;
+    }
+
     const usuarioLogadoAgr = {
       usuario: this.usuarioValue,
       senha: this.senhaValue,
